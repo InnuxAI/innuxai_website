@@ -1,7 +1,7 @@
 import Link from "next/link";
 import TextGif from "@/components/ui/text-gif";
 
-export const FooterSection = () => {
+export default function FooterSection() {
   const navigationItems = [
     {
       title: "Home",

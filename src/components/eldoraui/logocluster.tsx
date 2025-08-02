@@ -2,8 +2,13 @@
 
 import { clsx } from "clsx";
 import { motion } from "framer-motion";
+import { memo } from "react";
 
-function Mark({ className }: { className?: string }) {
+interface MarkProps {
+  className?: string;
+}
+
+const Mark = memo<MarkProps>(function Mark({ className }) {
   return (
     <svg viewBox="0 0 34 34" fill="#e879f9" className={className}>
       <path d="M19.598 18.5C18.7696 19.9349 16.9348 20.4265 15.4999 19.5981C14.065 18.7696 13.5734 16.9349 14.4018 15.5C15.2303 14.0651 17.065 13.5735 18.4999 14.4019C19.9348 15.2303 20.4264 17.0651 19.598 18.5Z" />
@@ -27,17 +32,15 @@ function Mark({ className }: { className?: string }) {
       <path d="M8.13398 3.64371C7.85783 3.16542 8.02171 2.55383 8.5 2.27768C8.97829 2.00154 9.58988 2.16542 9.86603 2.64371C10.1422 3.122 9.97829 3.73359 9.5 4.00973C9.02171 4.28588 8.41012 4.122 8.13398 3.64371Z" />
     </svg>
   );
-}
+});
 
-function Circle({
-  size,
-  delay,
-  opacity,
-}: {
+interface CircleProps {
   size: number;
   delay: number;
   opacity: string;
-}) {
+}
+
+const Circle = memo<CircleProps>(function Circle({ size, delay, opacity }) {
   return (
     <motion.div
       variants={{
@@ -62,9 +65,9 @@ function Circle({
       )}
     />
   );
-}
+});
 
-function Circles() {
+const Circles = memo(function Circles() {
   return (
     <div className="absolute inset-0">
       <Circle size={528} opacity="3%" delay={0.45} />
@@ -74,27 +77,24 @@ function Circles() {
       <div className="absolute inset-0 bg-gradient-to-t from-white to-35%  dark:from-gray-950" />
     </div>
   );
-}
+});
 
-function MainLogo() {
+const MainLogo = memo(function MainLogo() {
   return (
     <div className="absolute left-44 top-32 flex size-16 items-center justify-center rounded-full bg-white shadow ring-1 ring-black/5 dark:bg-gray-900 dark:ring-white/10">
       <Mark className="h-9 fill-[#e879f9]" />
     </div>
   );
-}
+});
 
-function Logo({
-  src,
-  left,
-  top,
-  hover,
-}: {
+interface LogoProps {
   src: string;
   left: number;
   top: number;
   hover: { x: number; y: number; rotate: number; delay: number };
-}) {
+}
+
+const Logo = memo<LogoProps>(function Logo({ src, left, top, hover }) {
   return (
     <motion.img
       variants={{
@@ -118,9 +118,9 @@ function Logo({
       className="absolute size-16 rounded-full bg-white shadow ring-1 ring-black/5 dark:bg-gray-900  dark:ring-white/10"
     />
   );
-}
+});
 
-export function LogoCluster() {
+export const LogoCluster = memo(function LogoCluster() {
   return (
     <div aria-hidden="true" className="relative h-full overflow-hidden">
       <Circles />
@@ -165,4 +165,4 @@ export function LogoCluster() {
       </div>
     </div>
   );
-}
+});

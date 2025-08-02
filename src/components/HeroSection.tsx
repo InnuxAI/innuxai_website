@@ -8,13 +8,13 @@ import { cn } from "../lib/utils"
 
 export default function HeroSection() {
   return (
-    // <AuroraBackground>
+    <AuroraBackground>
     <section>
       {/* Subtle background pattern */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gray-100/20 via-transparent to-transparent dark:from-gray-900/20"></div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-5xl mx-auto text-center flex flex-col items-center">
+      <div className="relative z-10 max-w-6xl mx-auto text-center flex flex-col items-center">
         {/* Animated Gradient Badge */}
         <div className="group relative  flex items-center justify-center rounded-full w-fit px-4 py-1.5 shadow-[inset_0_-8px_10px_#8fdfff1f] transition-shadow duration-500 ease-out hover:shadow-[inset_0_-5px_10px_#8fdfff3f] mb-8">
           <span
@@ -54,14 +54,14 @@ export default function HeroSection() {
         </h1>
 
         {/* Subtitle */}
-        <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed">
+        <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-12 max-w-4xl mx-auto leading-relaxed">
           MCP-compliant AI agents that seamlessly integrate with your enterprise tools.
           <br />
           Built for Gmail, SharePoint, MongoDB, and 100+ platforms.
         </p>
 
         {/* Rainbow CTA Button */}
-        <RainbowButton className="px-8 py-5 text-lg font-medium" style={{borderRadius: "1rem"}}>
+        <RainbowButton className="px-8 py-5 text-lg font-medium" style={{borderRadius: "1rem"}} onClick={() => window.location.href = "#contact"}>
           Get Started
           <ArrowRight className="ml-2 h-5 w-5" />
         </RainbowButton>
@@ -70,6 +70,6 @@ export default function HeroSection() {
       {/* Bottom transition */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-50 dark:from-gray-900 to-transparent"></div>
     </section>
-    // </AuroraBackground>
+    </AuroraBackground>
   )
 }

@@ -1,13 +1,17 @@
 "use client";
 
-import HeroSection from "./HeroSection";
-import FeaturesSection from "./FeaturesSection";
-import ERPAgentsSection from "./ErpAgentSection";
 import { NavbarDemo } from "./NavbarDemo";
 import ClientOnly from "./ClientOnly";
-import { FooterSection } from "./FooterSection";
-import { ContactSection } from "./ContactSection";
-import FeaturesSection2 from "./FeaturesSection2";
+
+import { lazy } from 'react';
+
+const HeroSection = lazy(() => import('./HeroSection'));
+const FeaturesSection = lazy(() => import('./FeaturesSection'));
+const ERPAgentsSection = lazy(() => import('./ErpAgentSection'));
+const ContractFlowSection = lazy(() => import('./ContractflowSection'));
+const ContactSection = lazy(() => import('./ContactSection'));
+const FooterSection = lazy(() => import('./FooterSection'));
+
 
 export default function InnuxAIBento() {
   return (
@@ -16,13 +20,15 @@ export default function InnuxAIBento() {
         <NavbarDemo />
       </ClientOnly>
 
-      <HeroSection />
+      <HeroSection/>
       <FeaturesSection />
 
       <div id="modules">
         <ERPAgentsSection />
       </div>
-      <FeaturesSection2 />
+      <div id="contractflow">
+        <ContractFlowSection />
+      </div>
       <div id="contact">
         <ContactSection />
       </div>

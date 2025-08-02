@@ -1,9 +1,4 @@
 "use client";
-
-import HeroSection from "./HeroSection";
-import FeaturesSection from "./FeaturesSection";
-import ERPAgentsSection from "./ErpAgentSection";
-
 import {
   Navbar,
   NavBody,
@@ -24,7 +19,7 @@ export function NavbarDemo() {
   const navItems = [
     { name: "Features", link: "#features" },
     { name: "ERP Agents", link: "#modules" },
-    { name: "Pricing", link: "#pricing" },
+    { name: "App Features", link: "#contractflow" },
     { name: "Contact", link: "#contact" },
   ];
 
@@ -66,8 +61,7 @@ export function NavbarDemo() {
             >
               {currentTheme === "dark" ? <Sun /> : <Moon />}
             </NavbarButton>
-            <NavbarButton variant="secondary">Login</NavbarButton>
-            <NavbarButton variant="primary">Book a call</NavbarButton>
+            {/* <NavbarButton variant="secondary">Login</NavbarButton> */}
           </div>
         </NavBody>
 

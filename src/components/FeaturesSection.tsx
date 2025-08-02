@@ -1,5 +1,5 @@
 import React from "react";
-import { Bot, Workflow, Building2, Database } from "lucide-react"
+import { Workflow, Building2 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import AnimatedBeamMultipleOutputDemo from "@/components/custom/animated-beam-multiple-outputs"
 import { AnimatedListDemo } from "@/components/custom/notifications"

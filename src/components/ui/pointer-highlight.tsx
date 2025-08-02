@@ -27,21 +27,23 @@ export const PointerHighlight = memo(function PointerHighlight({
   }, []);
 
   useEffect(() => {
-    if (containerRef.current) {
-      const { width, height } = containerRef.current.getBoundingClientRect();
+    const container = containerRef.current;
+    if (container) {
+      const { width, height } = container.getBoundingClientRect();
       setDimensions({ width, height });
     }
 
     const resizeObserver = new ResizeObserver(handleResize);
 
-    if (containerRef.current) {
-      resizeObserver.observe(containerRef.current);
+    if (container) {
+      resizeObserver.observe(container);
     }
 
     return () => {
-      if (containerRef.current) {
-        resizeObserver.unobserve(containerRef.current);
+      if (container) {
+        resizeObserver.unobserve(container);
       }
+      resizeObserver.disconnect();
     };
   }, [handleResize]);
 

@@ -1,6 +1,7 @@
 'use client';
+//@typescript-eslint/no-explicit-any
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import createGlobe from 'cobe';
 import { cn } from '@/lib/utils';
 

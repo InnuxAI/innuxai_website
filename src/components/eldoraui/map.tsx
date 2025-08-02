@@ -1,17 +1,19 @@
 "use client";
-
 import { motion } from "framer-motion";
+import { memo } from "react";
 
-function Marker({
-  src,
-  top,
-  offset,
-  delay,
-}: {
+interface MarkerProps {
   src: string;
   top: number;
   offset: number;
   delay: number;
+}
+
+const Marker = memo<MarkerProps>(function Marker({
+  src,
+  top,
+  offset,
+  delay,
 }) {
   return (
     <motion.div
@@ -40,44 +42,44 @@ function Marker({
       />
     </motion.div>
   );
-}
+});
 
-export function Map() {
+export const Map = memo(function Map() {
   return (
     <div aria-hidden="true" className="relative size-full">
-      <div className="absolute inset-0 bg-[url(https://res.cloudinary.com/eldoraui/image/upload/v1734021299/map_pcqdwb.png)] bg-[length:530px_430px] bg-[center_-75px] bg-no-repeat [mask-image:linear-gradient(to_bottom,black_50%,transparent)]" />
+      <div className="absolute inset-0 bg-[url(/assets/india_map.png)] bg-[length:530px_430px] bg-[center_-75px] bg-no-repeat [mask-image:linear-gradient(to_bottom,black_50%,transparent)]" />
       <div className="absolute inset-0">
         <Marker
           src="https://res.cloudinary.com/eldoraui/image/upload/v1734021174/5_xph5sf.jpg"
-          top={96}
-          offset={-128}
+          top={0}
+          offset={-120}
           delay={0.15}
         />
         <Marker
           src="https://res.cloudinary.com/eldoraui/image/upload/v1734021174/4_sy0ivq.jpg"
-          top={160}
-          offset={-16}
+          top={100}
+          offset={-165}
           delay={0.4}
         />
         <Marker
           src="https://res.cloudinary.com/eldoraui/image/upload/v1734021174/4_sy0ivq.jpg"
           top={144}
-          offset={96}
+          offset={0}
           delay={0.3}
         />
         <Marker
-          src="https://res.cloudinary.com/eldoraui/image/upload/v1734021174/2_bdaupg.jpg"
+          src="https://res.cloudinary.com/eldoraui/image/upload/v1734021173/2_bdaupg.jpg"
           top={192}
-          offset={64}
+          offset={-60}
           delay={0.6}
         />
         <Marker
           src="https://res.cloudinary.com/eldoraui/image/upload/v1734021173/1_u07yku.jpg"
-          top={224}
+          top={60}
           offset={-32}
           delay={0.8}
         />
       </div>
     </div>
   );
-}
+});

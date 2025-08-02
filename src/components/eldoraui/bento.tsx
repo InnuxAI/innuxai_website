@@ -1,17 +1,9 @@
 "use client";
-
 import { clsx } from "clsx";
 import { motion } from "framer-motion";
+import { memo } from "react";
 
-export function BentoCard({
-  dark = false,
-  className = "",
-  eyebrow,
-  title,
-  description,
-  graphic,
-  fade = [],
-}: {
+interface BentoCardProps {
   dark?: boolean;
   className?: string;
   eyebrow: React.ReactNode;
@@ -19,6 +11,18 @@ export function BentoCard({
   description: React.ReactNode;
   graphic: React.ReactNode;
   fade?: ("top" | "bottom")[];
+  fadeColor?: string;
+}
+
+export const BentoCard = memo<BentoCardProps>(function BentoCard({
+  dark = false,
+  className = "",
+  eyebrow,
+  title,
+  description,
+  graphic,
+  fade = [],
+  fadeColor = "white",
 }) {
   return (
     <motion.div
@@ -36,12 +40,20 @@ export function BentoCard({
       <div className="relative h-80 shrink-0">
         {graphic}
         {fade.includes("top") && (
-          // eslint-disable-next-line tailwindcss/no-contradicting-classname
-          <div className="absolute inset-0 bg-gradient-to-b from-white to-50% group-data-[dark]:from-gray-950 group-data-[dark]:from-[-25%]" />
+          <div 
+            className="absolute inset-0 bg-gradient-to-b to-50% group-data-[dark]:from-gray-950 group-data-[dark]:from-[-25%]"
+            style={{
+              backgroundImage: `linear-gradient(to bottom, ${fadeColor} 0%, transparent 50%)`
+            }}
+          />
         )}
         {fade.includes("bottom") && (
-          // eslint-disable-next-line tailwindcss/no-contradicting-classname
-          <div className="absolute inset-0 bg-gradient-to-t from-white to-50% group-data-[dark]:from-gray-950 group-data-[dark]:from-[-25%]" />
+          <div 
+            className="absolute inset-0 bg-gradient-to-t to-50% group-data-[dark]:from-gray-950 group-data-[dark]:from-[-25%]"
+            style={{
+              backgroundImage: `linear-gradient(to top, ${fadeColor} 0%, transparent 50%)`
+            }}
+          />
         )}
       </div>
       <div className="relative p-10">
@@ -57,4 +69,4 @@ export function BentoCard({
       </div>
     </motion.div>
   );
-}
+});

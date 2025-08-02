@@ -1,5 +1,6 @@
 'use client';
-import React, { useId, useMemo } from 'react';
+//@typescript-eslint/no-explicit-any
+import React, { useId } from 'react';
 import { useEffect, useState } from 'react';
 import Particles, { initParticlesEngine } from '@tsparticles/react';
 import type { Container, SingleOrMultiple } from '@tsparticles/engine';
@@ -18,7 +19,7 @@ type ParticlesProps = {
   particleColor?: string;
   particleDensity?: number;
 };
-export const SparklesCore = (props: ParticlesProps) => {
+export const Sparkles = (props: ParticlesProps) => {
   const {
     id,
     className,
@@ -432,3 +433,6 @@ export const SparklesCore = (props: ParticlesProps) => {
     </motion.div>
   );
 };
+
+
+export const SparklesCore = React.memo(Sparkles)

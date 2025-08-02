@@ -1,7 +1,7 @@
 import React from "react";
 import { BentoDemo } from "./demo_bento";
 
-const FeaturesSection2 = () => {
+const ContractFlowSection = () => {
     return (
     <div id="features" className="w-full max-w-7xl mx-auto p-6 py-20">
             <div className="text-center mb-12">
@@ -10,13 +10,10 @@ const FeaturesSection2 = () => {
                 Discover how InnuxAI transforms your enterprise workflows with intelligent automation.
             </p>
             </div>
-
-
-           
             <BentoDemo />
             
         </div>
     )
 }
 
-export default React.memo(FeaturesSection2);
+export default React.memo(ContractFlowSection);

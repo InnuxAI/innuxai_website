@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { cn } from "@/lib/utils";
 
 interface CardCommentProps {
@@ -7,7 +7,11 @@ interface CardCommentProps {
   className?: string;
 }
 
-export const CardComment = ({ commenter, replier, className }: CardCommentProps) => {
+export const CardComment = memo<CardCommentProps>(function CardComment({ 
+  commenter, 
+  replier, 
+  className 
+}) {
   return (
     <div className={cn("storybook-fix group mx-auto h-48 w-full max-w-md rounded-xl bg-white p-4 shadow", className)}>
       <div className="relative flex h-40 flex-col space-y-4 overflow-hidden rounded-md bg-neutral-50 text-black shadow-sm hover:shadow-lg">
@@ -16,7 +20,6 @@ export const CardComment = ({ commenter, replier, className }: CardCommentProps)
           <div className="my-2 h-3 w-full animate-pulse rounded-md bg-neutral-300" />
           <div className="my-2 h-3 w-2/5 animate-pulse rounded-md bg-neutral-300" />
         </div>
-
         <div className="w-full px-4 opacity-0 transition-all group-hover:-translate-y-1/3 group-hover:opacity-100">
           <div className="h-40 w-full rounded-md bg-[#e879f9] p-4">
             <h3 className="text-sm font-semibold text-white">
@@ -30,4 +33,4 @@ export const CardComment = ({ commenter, replier, className }: CardCommentProps)
       </div>
     </div>
   );
-};
+});

@@ -3,9 +3,13 @@ import Image from "next/image"
 
 import { cn } from "@/lib/utils"
 
-const MinimalCard = React.forwardRef<
+interface MinimalCardProps extends React.HTMLAttributes<HTMLDivElement> {
+  children?: React.ReactNode;
+}
+
+const MinimalCard = React.memo(React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement> & { children?: React.ReactNode }
+  MinimalCardProps
 >(({ className, children, ...props }, ref) => (
   <div
     ref={ref}
@@ -20,12 +24,17 @@ const MinimalCard = React.forwardRef<
   >
     {children}
   </div>
-))
+)))
 MinimalCard.displayName = "MinimalCard"
 
-const MinimalCardImage = React.forwardRef<
+interface MinimalCardImageProps extends React.HTMLAttributes<HTMLDivElement> {
+  src: string;
+  alt: string;
+}
+
+const MinimalCardImage = React.memo(React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement> & { src: string; alt: string }
+  MinimalCardImageProps
 >(({ className, alt, src, ...props }, ref) => (
   <div
     ref={ref}
@@ -37,7 +46,7 @@ const MinimalCardImage = React.forwardRef<
     )}
     {...props}
   >
-    <img
+    <Image
       src={src}
       alt={alt}
       width={200}
@@ -60,10 +69,10 @@ const MinimalCardImage = React.forwardRef<
       />
     </div>
   </div>
-))
+)))
 MinimalCardImage.displayName = "MinimalCardImage"
 
-const MinimalCardTitle = React.forwardRef<
+const MinimalCardTitle = React.memo(React.forwardRef<
   HTMLHeadingElement,
   React.HTMLAttributes<HTMLHeadingElement>
 >(({ className, ...props }, ref) => (
@@ -72,10 +81,10 @@ const MinimalCardTitle = React.forwardRef<
     className={cn("text-lg mt-2 font-semibold leading-tight px-1", className)}
     {...props}
   />
-))
+)))
 MinimalCardTitle.displayName = "MinimalCardTitle"
 
-const MinimalCardDescription = React.forwardRef<
+const MinimalCardDescription = React.memo(React.forwardRef<
   HTMLParagraphElement,
   React.HTMLAttributes<HTMLParagraphElement>
 >(({ className, ...props }, ref) => (
@@ -84,18 +93,18 @@ const MinimalCardDescription = React.forwardRef<
     className={cn("text-sm text-neutral-500 pb-2 px-1", className)}
     {...props}
   />
-))
+)))
 MinimalCardDescription.displayName = "MinimalCardDescription"
 
-const MinimalCardContent = React.forwardRef<
+const MinimalCardContent = React.memo(React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
   <div ref={ref} className={cn("p-6 pt-0", className)} {...props} />
-))
+)))
 MinimalCardContent.displayName = "MinimalCardContent"
 
-const MinimalCardFooter = React.forwardRef<
+const MinimalCardFooter = React.memo(React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
@@ -104,7 +113,7 @@ const MinimalCardFooter = React.forwardRef<
     className={cn("flex items-center p-6 pt-0", className)}
     {...props}
   />
-))
+)))
 MinimalCardFooter.displayName = "MinimalCardFooter"
 
 export {

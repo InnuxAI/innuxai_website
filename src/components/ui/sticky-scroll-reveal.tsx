@@ -1,4 +1,5 @@
 "use client";
+//@typescript-eslint/no-explicit-any
 import React, { useEffect, useRef, useState } from "react";
 import { useMotionValueEvent, useScroll } from "motion/react";
 import { motion } from "motion/react";
@@ -71,7 +72,7 @@ export const StickyScroll = ({
         backgroundColor: backgroundColors[activeCard % backgroundColors.length],
       }}
       className={cn(
-        "relative flex h-[30rem] justify-center space-x-10 overflow-y-auto rounded-md p-10 gap-20",
+        "relative flex h-[30rem] justify-center space-x-10 overflow-y-auto rounded-md p-10 gap-20 scrollbar-hide",
         className
       )}
       style={{

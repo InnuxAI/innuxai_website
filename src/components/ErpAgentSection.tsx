@@ -1,80 +1,84 @@
 "use client"
 import React from "react"
 import { StickyScroll } from "@/components/ui/sticky-scroll-reveal"
-import { Building2, Users, ShoppingCart, Truck, Calculator, BarChart3 } from "lucide-react"
-import { img } from "motion/react-client"
+// import Image from "next/image"
 
 const content = [
   {
-    title: "Accounting & Finance",
+    title: "Procurement",
     description:
-      "Automate invoice processing, expense tracking, and financial reporting with InnuxAI agents. Seamlessly integrate with ERPNext's accounting modules to streamline your financial workflows and ensure accurate bookkeeping across all transactions.",
+      "Automate procurement workflows, supplier management, and purchase order processing with InnuxAI agents. Seamlessly integrate with ERPNext’s procurement and inventory modules to streamline requisitions, approvals, vendor coordination, and inventory tracking—ensuring efficient purchasing, reduced delays, and intelligent decision, making across your supply chain.",
     content: (
       <img 
-        src="/assets/1. home_screen_reorder tirggered.png" 
+        src="/assets/procurement.png" 
         alt="Finance Dashboard" 
         className="w-full h-full object-contain p-0 m-0"
+        width={100}
       />
     ),
   },
+  // {
+  //   title: "Human Resources",
+  //   description:
+  //     "Transform HR operations with intelligent agents that handle employee onboarding, payroll processing, and performance tracking. Our AI agents integrate seamlessly with ERPNext HR modules to automate recruitment workflows and employee lifecycle management.",
+  //   content: (
+  //     <img 
+  //       src="/assets/2. MR generated.png" 
+  //       alt="HR Dashboard" 
+  //       className="w-full h-full object-contain p-0 m-0"
+  //     />
+  //   ),
+  // },
+  // {
+  //   title: "Sales & CRM",
+  //   description:
+  //     "Boost your sales performance with AI agents that automate lead qualification, opportunity tracking, and customer communication. Integrate with ERPNext CRM to create intelligent sales workflows that convert prospects into customers more efficiently.",
+  //   content: (
+  //     <img 
+  //       src="/assets/3. RFQ Notificaton.png" 
+  //       alt="Sales Dashboard" 
+  //       className="w-full h-full object-contain p-0 m-0"
+  //     />
+  //   ),
+  // },
+  // {
+  //   title: "Inventory Management",
+  //   description:
+  //     "Optimize inventory levels with intelligent agents that monitor stock levels, predict demand, and automate reordering processes. Connect with ERPNext inventory modules to maintain optimal stock levels while reducing carrying costs and stockouts.",
+  //   content: (
+  //     <img 
+  //       src="/assets/1. home_screen_reorder tirggered.png" 
+  //       alt="Inventory Dashboard" 
+  //       className="w-full h-full object-contain p-0 m-0"
+  //     />
+  //   ),
+  // },
+  // {
+  //   title: "Supply Chain & Procurement",
+  //   description:
+  //     "Streamline procurement processes with AI agents that automate vendor selection, purchase order creation, and supplier communication. Integrate with ERPNext procurement workflows to ensure timely deliveries and cost optimization across your supply chain.",
+  //   content: (
+  //     <img 
+  //       src="/assets/2. MR generated.png" 
+  //       alt="Supply Chain Dashboard" 
+  //       className="w-full h-full object-contain p-0 m-0"
+  //     />
+  //   ),
+  // },
   {
-    title: "Human Resources",
+    title: "Other Modules",
     description:
-      "Transform HR operations with intelligent agents that handle employee onboarding, payroll processing, and performance tracking. Our AI agents integrate seamlessly with ERPNext HR modules to automate recruitment workflows and employee lifecycle management.",
+      "Exciting things are on the horizon! Other module integrations are currently under development, and the team at InnuxAI is working earnestly to bring it to life. Stay tuned — additional modules and capabilities will be rolling out shortly as we continue to build and refine the experience.",
     content: (
-      <img 
-        src="/assets/2. MR generated.png" 
-        alt="HR Dashboard" 
-        className="w-full h-full object-contain p-0 m-0"
-      />
-    ),
-  },
-  {
-    title: "Sales & CRM",
-    description:
-      "Boost your sales performance with AI agents that automate lead qualification, opportunity tracking, and customer communication. Integrate with ERPNext CRM to create intelligent sales workflows that convert prospects into customers more efficiently.",
-    content: (
-      <img 
-        src="/assets/3. RFQ Notificaton.png" 
-        alt="Sales Dashboard" 
-        className="w-full h-full object-contain p-0 m-0"
-      />
-    ),
-  },
-  {
-    title: "Inventory Management",
-    description:
-      "Optimize inventory levels with intelligent agents that monitor stock levels, predict demand, and automate reordering processes. Connect with ERPNext inventory modules to maintain optimal stock levels while reducing carrying costs and stockouts.",
-    content: (
-      <img 
-        src="/assets/1. home_screen_reorder tirggered.png" 
-        alt="Inventory Dashboard" 
-        className="w-full h-full object-contain p-0 m-0"
-      />
-    ),
-  },
-  {
-    title: "Supply Chain & Procurement",
-    description:
-      "Streamline procurement processes with AI agents that automate vendor selection, purchase order creation, and supplier communication. Integrate with ERPNext procurement workflows to ensure timely deliveries and cost optimization across your supply chain.",
-    content: (
-      <img 
-        src="/assets/2. MR generated.png" 
-        alt="Supply Chain Dashboard" 
-        className="w-full h-full object-contain p-0 m-0"
-      />
-    ),
-  },
-  {
-    title: "Manufacturing Operations",
-    description:
-      "Enhance manufacturing efficiency with AI agents that optimize production schedules, monitor quality control, and manage work orders. Seamlessly integrate with ERPNext manufacturing modules to create intelligent production workflows that maximize output and minimize waste.",
-    content: (
-      <img 
-        src="/assets/3. RFQ Notificaton.png" 
-        alt="Manufacturing Dashboard" 
-        className="w-full h-full object-contain p-0 m-0"
-      />
+      <div className="flex items-center justify-center h-full bg-background dark:bg-background"
+        // style={{
+        //   background: "linear-gradient(90deg, rgba(5, 5, 10, 1.000) 0.000%, rgba(5, 5, 10, 1.000) 7.692%, rgba(9, 10, 14, 1.000) 7.692%, rgba(9, 10, 14, 1.000) 15.385%, rgba(13, 14, 18, 1.000) 15.385%, rgba(13, 14, 18, 1.000) 23.077%, rgba(18, 19, 22, 1.000) 23.077%, rgba(18, 19, 22, 1.000) 30.769%, rgba(22, 23, 26, 1.000) 30.769%, rgba(22, 23, 26, 1.000) 38.462%, rgba(26, 27, 30, 1.000) 38.462%, rgba(26, 27, 30, 1.000) 46.154%, rgba(30, 31, 34, 1.000) 46.154%, rgba(30, 31, 34, 1.000) 53.846%, rgba(34, 35, 38, 1.000) 53.846%, rgba(34, 35, 38, 1.000) 61.538%, rgba(38, 39, 42, 1.000) 61.538%, rgba(38, 39, 42, 1.000) 69.231%, rgba(41, 42, 45, 1.000) 69.231%, rgba(41, 42, 45, 1.000) 76.923%, rgba(44, 45, 48, 1.000) 76.923%, rgba(44, 45, 48, 1.000) 84.615%, rgba(46, 47, 51, 1.000) 84.615%, rgba(46, 47, 51, 1.000) 92.308%, rgba(48, 49, 53, 1.000) 92.308% 100.000%)"
+          // }}
+        >
+        <span className="mx-auto pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300/80 bg-clip-text text-center text-8xl font-semibold leading-none text-transparent dark:from-white dark:to-slate-900/10">
+          Coming Soon
+        </span>
+      </div>
     ),
   },
 ]
