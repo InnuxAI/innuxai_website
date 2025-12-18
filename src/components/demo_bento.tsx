@@ -2,7 +2,6 @@
 import React from "react";
 
 import { BentoCard } from "@/components/eldoraui/bento";
-import { Globe } from "@/components/magicui/globe";
 
 import {
   MinimalCard,
@@ -10,7 +9,6 @@ import {
   MinimalCardTitle,
 } from "@/components/ui/minimal-card"
 
-import { CardComment } from "@/components/eldoraui/animatedcardcomment";
 import { Badge } from "@/components/ui/badge";
 
 
@@ -59,7 +57,7 @@ const BentoDemoComponent = () => {
         description="Reviewer and approver workflows are simplified with AI tools, comments, version tracking, and instant notifications, collaborate seamlessly."
         graphic={
           // <div className="flex size-full px-4 pt-4">
-            <ReviewApproveCard />
+          <ReviewApproveCard />
           // </div>
         }
         className="lg:rounded-bl-4xl lg:col-span-2"
@@ -71,7 +69,7 @@ const BentoDemoComponent = () => {
         title="Chat with AI"
         description="Chat with AI to get instant responses to your questions related to the contract and get help with your tasks."
         graphic={
-          
+
           <AIChatCard />
         }
 

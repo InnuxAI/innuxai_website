@@ -62,7 +62,7 @@ export function ReviewApproveCard() {
 
             {/* Document View */}
             <div className="relative z-10 flex-1 rounded-lg bg-white dark:bg-neutral-900/50 p-4 border border-gray-200 dark:border-white/5 font-mono text-[10px] text-gray-400 dark:text-neutral-400 leading-relaxed">
-                <p>12. <span className="text-gray-600 dark:text-neutral-500 font-semibold">Indemnification.</span> Provider shall indemnify Customer against any third-party claims arising from Provider's gross negligence.</p>
+                <p>12. <span className="text-gray-600 dark:text-neutral-500 font-semibold">Indemnification.</span> Provider shall indemnify Customer against any third-party claims arising from Provider&apos;s gross negligence.</p>
                 <div className="h-2" />
                 <div className="relative">
                     13. <span className="text-gray-600 dark:text-neutral-500 font-semibold">Termination.</span> Either party may terminate this Agreement with

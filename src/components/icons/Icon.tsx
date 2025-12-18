@@ -12,7 +12,7 @@ const Icon: FC<IconProps> = ({
   color,
   disabled = false
 }) => {
-  const IconElement = ICONS[type]
+  const IconElement = ICONS[type] as any
 
   return (
     <IconElement

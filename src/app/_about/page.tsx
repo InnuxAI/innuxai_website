@@ -94,7 +94,7 @@ export default function AboutPage() {
                 <section className="relative py-20 text-center">
                     <div className="absolute inset-0 bg-gradient-to-r from-blue-900/20 to-purple-900/20 blur-3xl -z-10 rounded-full opacity-50" />
                     <h2 className="text-3xl md:text-5xl font-serif font-bold mb-8">
-                        "Our mission is to make work <br /> feel less like work."
+                        &quot;Our mission is to make work <br /> feel less like work.&quot;
                     </h2>
                 </section>
 

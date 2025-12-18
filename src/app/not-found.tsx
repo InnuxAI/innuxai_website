@@ -45,8 +45,8 @@ export default function NotFound() {
                         Lost in the ether?
                     </h2>
                     <p className="text-gray-600 dark:text-gray-400 text-base md:text-lg leading-relaxed">
-                        The page you're looking for doesn't exist or has been moved.
-                        Let's get you back to familiar territory.
+                        The page you&apos;re looking for doesn&apos;t exist or has been moved.
+                        Let&apos;s get you back to familiar territory.
                     </p>
                 </motion.div>
 
