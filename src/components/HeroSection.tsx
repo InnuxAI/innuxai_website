@@ -11,7 +11,7 @@ export default function HeroSection() {
   return (
     <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 -z-20">
-        {/* <InteractiveShader flowSpeed={0.05} /> */}
+        <InteractiveShader flowSpeed={0.05} />
       </div>
       {/* Grayscale overlay for depth and separation */}
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.6)_100%)] dark:bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.8)_100%)] pointer-events-none" />
