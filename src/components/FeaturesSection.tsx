@@ -1,13 +1,12 @@
 import React from "react";
 import { Workflow, Building2 } from "lucide-react"
 import { cn } from "@/lib/utils"
-import AnimatedBeamMultipleOutputDemo from "@/components/custom/animated-beam-multiple-outputs"
-import { AnimatedListDemo } from "@/components/custom/notifications"
-import { OrbitingCirclesDemo } from "@/components/custom/oribiting-cicles-mcp"
 import { BentoCard, BentoGrid } from "@/components/magicui/bento-grid"
-import { Marquee } from "@/components/magicui/marquee"
 import { AgnoIcon } from "@/components/icons/custom-icons";
-
+import { LiveWorkflowsCard } from "@/components/custom/live-workflows-card";
+import { AIAgentsCard } from "@/components/custom/ai-agents-card";
+import { EnterpriseIntegrationsCard } from "@/components/custom/enterprise-integrations-card";
+import { MCPComplianceCard } from "@/components/custom/mcp-compliance-card";
 
 const Icons = {
   mcp: () => (
@@ -24,135 +23,75 @@ const Icons = {
     </svg>
   ),
 }
-  const agents = [
-    {
-      name: "Gmail Agent",
-      body: "Automate email processing, categorization, and responses. Extract insights from email conversations and trigger workflows based on email content.",
-      icon: "📧",
-      color: "#EA4335",
-    },
-    {
-      name: "SharePoint Agent",
-      body: "Seamlessly integrate with SharePoint to automate document management, content approval workflows, and collaborative processes.",
-      icon: "📁",
-      color: "#0078D4",
-    },
-    {
-      name: "MongoDB Agent",
-      body: "Connect and automate database operations, data synchronization, and real-time analytics with your MongoDB instances.",
-      icon: "🍃",
-      color: "#47A248",
-    },
-    {
-      name: "Slack Agent",
-      body: "Enhance team collaboration with automated notifications, message processing, and workflow triggers directly in Slack.",
-      icon: "💬",
-      color: "#4A154B",
-    },
-    {
-      name: "Salesforce Agent",
-      body: "Streamline CRM operations with automated lead processing, opportunity management, and customer data synchronization.",
-      icon: "☁️",
-      color: "#00A1E0",
-    },
-  ]
-  
-  const features = [
-    {
-      Icon: AgnoIcon,
-      name: "AI Agents",
-      description: "MCP-compliant agents that integrate with your enterprise tools seamlessly.",
-      href: "#",
-      cta: "Explore Agents",
-      className: "col-span-3 lg:col-span-1",
-      background: (
-        <Marquee
-          pauseOnHover
-          className="absolute top-10 [--duration:20s] [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] "
-        >
-          {agents.map((agent, idx) => (
-            <figure
-              key={idx}
-              className={cn(
-                "relative w-40 cursor-pointer overflow-hidden rounded-xl border p-4",
-                "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
-                "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]",
-                "transform-gpu blur-[1px] transition-all duration-300 ease-out hover:blur-none",
-              )}
-            >
-              <div className="flex flex-row items-center gap-2">
-                <div
-                  className="flex size-8 items-center justify-center rounded-lg text-white text-sm font-medium"
-                  style={{ backgroundColor: agent.color }}
-                >
-                  {agent.icon}
-                </div>
-                <div className="flex flex-col">
-                  <figcaption className="text-sm font-medium dark:text-white ">{agent.name}</figcaption>
-                </div>
-              </div>
-              <blockquote className="mt-2 text-xs text-gray-600 dark:text-gray-400">{agent.body}</blockquote>
-            </figure>
-          ))}
-        </Marquee>
-      ),
-    },
-    {
-      Icon: Workflow,
-      name: "Live Workflows",
-      description: "Real-time automation activities across your enterprise systems.",
-      href: "#",
-      cta: "View Dashboard",
-      className: "col-span-3 lg:col-span-2",
-      background: (
-        <AnimatedListDemo className="absolute right-2 top-4 h-[300px] border-none transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_10%,#000_100%)] group-hover:scale-105" />
-      ),
-    },
-    {
-      Icon: Building2,
-      name: "Enterprise Integrations",
-      description: "Connect with 100+ enterprise tools and platforms seamlessly.",
-      href: "#",
-      cta: "View Integrations",
-      className: "col-span-3 lg:col-span-2",
-      background: (
-        <AnimatedBeamMultipleOutputDemo className="absolute right-2 top-4 h-[300px] border-none transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_10%,#000_100%)] group-hover:scale-105" />
-      ),
-    },
-    {
-      Icon: Icons.mcp,
-      name: "MCP Compliant",
-      description: "All agents follow Model Context Protocol standards for reliability.",
-      className: "col-span-3 lg:col-span-1 bg-transparent",
-      href: "#",
-      cta: "Learn More",
-      background: (
-        <OrbitingCirclesDemo className="absolute right-2 top-4 h-[300px] border-none transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_10%,#000_100%)] group-hover:scale-105" />
-      ),
-    },
-    
-  ]
+
+const features = [
+  {
+    Icon: AgnoIcon,
+    name: "AI Agents",
+    description: "MCP-compliant agents that integrate with your enterprise tools seamlessly.",
+    href: "#",
+    cta: "Explore Agents",
+    className: "col-span-1 md:col-span-3 lg:col-span-1",
+    background: (
+      <AIAgentsCard />
+    ),
+  },
+  {
+    Icon: Workflow,
+    name: "Live Workflows",
+    description: "Real-time automation activities across your enterprise systems.",
+    href: "#",
+    cta: "View Dashboard",
+    className: "col-span-1 md:col-span-3 lg:col-span-2",
+    background: (
+      <LiveWorkflowsCard />
+    ),
+  },
+  {
+    Icon: Building2,
+    name: "Enterprise Integrations",
+    description: "Connect with 100+ enterprise tools and platforms seamlessly.",
+    href: "#",
+    cta: "View Integrations",
+    className: "col-span-1 md:col-span-3 lg:col-span-2",
+    background: (
+      <EnterpriseIntegrationsCard />
+    ),
+  },
+  {
+    Icon: Icons.mcp,
+    name: "MCP Compliant",
+    description: "All agents follow Model Context Protocol standards for reliability.",
+    className: "col-span-1 md:col-span-3 lg:col-span-1 bg-transparent",
+    href: "#",
+    cta: "Learn More",
+    background: (
+      <MCPComplianceCard />
+    ),
+  },
+
+]
 
 const FeaturesSection = () => {
-    return (
+  return (
     <div id="features" className="w-full max-w-7xl mx-auto p-6 py-20">
-            <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">Platform Features</h2>
-            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-                Discover how InnuxAI transforms your enterprise workflows with intelligent automation.
-            </p>
-            </div>
+      <div className="text-center mb-16 md:mb-20">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-6 tracking-tight">Platform Features</h2>
+        <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-loose text-balance">
+          Discover how InnuxAI transforms your enterprise workflows with intelligent automation.
+        </p>
+      </div>
 
-            <BentoGrid>
-            {features.map((feature, idx) => (
-                <BentoCard key={idx} {...feature} />
-            ))}
-            </BentoGrid>
-           
-            {/* <ExpandableCardExamples /> */}
-            
-        </div>
-    )
+      <BentoGrid>
+        {features.map((feature, idx) => (
+          <BentoCard key={idx} {...feature} />
+        ))}
+      </BentoGrid>
+
+      {/* <ExpandableCardExamples /> */}
+
+    </div>
+  )
 }
 
 export default React.memo(FeaturesSection);

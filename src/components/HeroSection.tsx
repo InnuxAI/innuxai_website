@@ -3,73 +3,85 @@ import { RainbowButton } from "./magicui/rainbow-button"
 import { AuroraText } from "./magicui/aurora-text"
 import { AnimatedGradientText } from "./magicui/animated-gradient-text"
 import { PointerHighlight } from "./ui/pointer-highlight"
-import { AuroraBackground } from "./ui/aurora-background";
+import { GridPattern } from "./ui/grid-pattern"
 import { cn } from "../lib/utils"
+import { InteractiveShader } from "./custom/digital-aurora"
 
 export default function HeroSection() {
   return (
-    <AuroraBackground>
-    <section>
-      {/* Subtle background pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gray-100/20 via-transparent to-transparent dark:from-gray-900/20"></div>
+    <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden">
+      <div className="absolute inset-0 -z-20">
+        {/* <InteractiveShader flowSpeed={0.05} /> */}
+      </div>
+      {/* Grayscale overlay for depth and separation */}
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.6)_100%)] dark:bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.8)_100%)] pointer-events-none" />
+
 
       {/* Content */}
-      <div className="relative z-10 max-w-6xl mx-auto text-center flex flex-col items-center">
+      <div className="relative z-10 max-w-7xl mx-auto text-center flex flex-col items-center px-4 py-24 md:py-32 ">
         {/* Animated Gradient Badge */}
-        <div className="group relative  flex items-center justify-center rounded-full w-fit px-4 py-1.5 shadow-[inset_0_-8px_10px_#8fdfff1f] transition-shadow duration-500 ease-out hover:shadow-[inset_0_-5px_10px_#8fdfff3f] mb-8">
+        <div
+          className={cn(
+            "group relative mx-auto flex max-w-fit flex-row items-center justify-center rounded-full bg-black/30 border border-black/5 dark:border-white/10 py-1.5 px-4 text-sm font-medium backdrop-blur-md transition-all duration-500 ease-out hover:bg-black/75 hover:shadow-[0_0_1.5rem_-0.2rem_rgba(0,0,0,0.1)] dark:hover:shadow-[0_0_1.5rem_-0.2rem_rgba(255,255,255,0.2)] mb-12"
+          )}
+        >
           <span
             className={cn(
-              "absolute inset-0 block h-full w-full animate-gradient rounded-[inherit] bg-gradient-to-r from-[#ffaa40]/50 via-[#9c40ff]/50 to-[#ffaa40]/50 bg-[length:300%_100%] p-[1px]",
+              "absolute inset-0 block h-full w-full animate-gradient rounded-[inherit] bg-gradient-to-r from-[#ffaa40]/30 via-[#9c40ff]/30 to-[#ffaa40]/30 bg-[length:300%_100%] p-[1px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
             )}
             style={{
-              WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+              WebkitMask:
+                "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
               WebkitMaskComposite: "destination-out",
               mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
               maskComposite: "subtract",
               WebkitClipPath: "padding-box",
             }}
           />
-          🎉 <hr className="mx-2 h-4 w-px shrink-0 bg-neutral-500" />
-          <AnimatedGradientText className="text-sm font-medium">
+          <span className="mr-2">🎉</span>
+          <span className="h-4 w-px bg-white/20 mx-2" />
+          <AnimatedGradientText className="text-sm font-medium tracking-wide text-gray-200">
             Introducing InnuxAI Enterprise Platform
           </AnimatedGradientText>
-          <ChevronRight className="ml-1 size-4 stroke-neutral-500 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
+          <ChevronRight className="ml-1 size-4 stroke-gray-500 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
         </div>
 
         {/* Main headline with Aurora Text and Pointer Highlight */}
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-gray-900 dark:text-gray-100 mb-8 leading-tight tracking-tight">
-          <AuroraText className="glow-text">InnuxAI</AuroraText> is the new way
-          <br />
-          <span>
-            to{" "}
-            <PointerHighlight
-              rectangleClassName="bg-blue-100 dark:bg-blue-900 border-blue-300 dark:border-blue-700 leading-loose"
-              pointerClassName="text-blue-500"
-              containerClassName="inline-block mx-1"
+        <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-10 leading-[1.1] tracking-tight max-w-6xl mx-auto text-balance drop-shadow-sm">
+          InnuxAI is the new way to automate workflows 
+          <br className="hidden md:block" />
+            {/* <PointerHighlight
+              rectangleClassName="bg-blue-500/10 dark:bg-black/20 border-blue-500/20 dark:border-blue-500/30 rounded-xl"
+              pointerClassName="text-blue-400"
+              containerClassName="inline-flex items-center justify-center pt-1"
             >
-              <span className="relative z-10">automate</span>
-            </PointerHighlight>
-          </span>{" "}
-          <span className="text-gray-600 dark:text-gray-400">workflows.</span>
+              <span className="relative z-10 font-bold px-4 py-1">automate</span>
+            </PointerHighlight> */}
         </h1>
 
         {/* Subtitle */}
-        <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-12 max-w-4xl mx-auto leading-relaxed">
-          MCP-compliant AI agents that seamlessly integrate with your enterprise tools.
-          <br />
-          Built for Gmail, SharePoint, MongoDB, and 100+ platforms.
+        <p className="text-base sm:text-lg md:text-xl mb-12 max-w-4xl mx-auto leading-loose tracking-wide font-light text-balance drop-shadow-sm">
+          MCP-compliant AI agents that seamlessly integrate with your enterprise tools. 
+          <br/>
+          Built for <span className="text-white font-medium">Gmail</span>, <span className="text-white font-medium">SharePoint</span>, <span className="text-white font-medium">MongoDB</span>, and 100+ platforms.
         </p>
 
         {/* Rainbow CTA Button */}
-        <RainbowButton className="px-8 py-5 text-lg font-medium" style={{borderRadius: "1rem"}} onClick={() => window.location.href = "#contact"}>
-          Get Started
-          <ArrowRight className="ml-2 h-5 w-5" />
-        </RainbowButton>
+        <div className="relative group">
+          <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-violet-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+          <RainbowButton
+            className="relative px-8 py-5 md:px-10 md:py-6 text-lg font-semibold tracking-wide shadow-xl"
+            style={{ borderRadius: "1rem" }}
+            onClick={() => (window.location.href = "#contact")}
+          >
+            Get Started
+            <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+          </RainbowButton>
+        </div>
       </div>
 
-      {/* Bottom transition */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-50 dark:from-gray-900 to-transparent"></div>
+      {/* Bottom transition
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent pointer-events-none"></div> */}
     </section>
-    </AuroraBackground>
-  )
+  );
 }

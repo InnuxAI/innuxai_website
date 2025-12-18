@@ -84,29 +84,32 @@ export function NavbarDemo() {
                 key={`mobile-link-${idx}`}
                 href={item.link}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="relative text-neutral-600 dark:text-neutral-300"
+                className="relative w-full p-4 text-lg font-medium text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-xl transition-all duration-200"
               >
                 <span className="block">{item.name}</span>
               </a>
             ))}
-            <div className="flex w-full flex-col gap-4">
+            <div className="flex w-full flex-col gap-4 mt-4">
+              <div className="flex gap-4 w-full">
+                <NavbarButton
+                  onClick={() => {
+                    handleToggle();
+                    // Keep menu open or close it? Usually close it or let user see change.
+                    // Let's keep it open so they can toggle back if they want, or close it.
+                    // User request implies it wasn't working.
+                  }}
+                  variant="secondary"
+                  className="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-neutral-200 dark:border-neutral-800"
+                >
+                  {currentTheme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+                  <span>{currentTheme === "dark" ? "Light Mode" : "Dark Mode"}</span>
+                </NavbarButton>
+              </div>
+
               <NavbarButton
                 onClick={() => setIsMobileMenuOpen(false)}
                 variant="primary"
-              >
-                {currentTheme === "dark" ? <Moon /> : <Sun />}
-              </NavbarButton>
-              <NavbarButton
-                onClick={() => setIsMobileMenuOpen(false)}
-                variant="primary"
-                className="w-full"
-              >
-                Login
-              </NavbarButton>
-              <NavbarButton
-                onClick={() => setIsMobileMenuOpen(false)}
-                variant="primary"
-                className="w-full"
+                className="w-full h-12 text-base rounded-xl"
               >
                 Book a call
               </NavbarButton>
