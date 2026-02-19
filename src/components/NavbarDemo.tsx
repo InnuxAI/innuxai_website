@@ -13,7 +13,7 @@ import {
 
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import { Moon, Sun } from "lucide-react";
+
 
 export function NavbarDemo() {
   const navItems = [
@@ -38,14 +38,7 @@ export function NavbarDemo() {
 
   const currentTheme = theme === "system" ? systemTheme : theme;
 
-  const handleToggle = () => {
-    const nextTheme = currentTheme === "dark" ? "light" : "dark";
-    console.log(`[ThemeToggle] clicked: switching from ${currentTheme} → ${nextTheme}`);
-    setTheme(nextTheme);
-    setTimeout(() => {
-      console.log(`[ThemeToggle] document.documentElement.classList =`, document.documentElement.classList.value);
-    }, 100);
-  };
+
 
   return (
     <div className="fixed top-2 left-0 right-0 z-50">
