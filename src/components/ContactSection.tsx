@@ -1,7 +1,7 @@
 "use client";
 
 import { CalendarIcon, Check, MoveRight, Loader2 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import emailjs from '@emailjs/browser';
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -25,6 +25,15 @@ export default function ContactSection() {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [isSent, setIsSent] = useState(false);
+
+  useEffect(() => {
+    if (isSent) {
+      const timer = setTimeout(() => {
+        setIsSent(false);
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [isSent]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { id, value } = e.target;
@@ -68,10 +77,7 @@ export default function ContactSection() {
       });
       setDate(new Date());
 
-      // Reset success message after 5 seconds
-      setTimeout(() => {
-        setIsSent(false);
-      }, 5000);
+      setDate(new Date());
 
     } catch (error) {
       console.error('Failed to send email:', error);

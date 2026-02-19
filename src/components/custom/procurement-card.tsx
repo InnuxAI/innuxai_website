@@ -1,23 +1,26 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import { ShoppingCart, Bot, CheckCircle2, FileText, Package, ArrowRight, Building2, CreditCard } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export function ProcurementCard() {
     const [step, setStep] = useState(0);
+    const containerRef = useRef(null);
+    const isInView = useInView(containerRef);
 
     // Animation sequence
     useEffect(() => {
+        if (!isInView) return;
         const timer = setInterval(() => {
             setStep((prev) => (prev + 1) % 5);
         }, 2500);
         return () => clearInterval(timer);
-    }, []);
+    }, [isInView]);
 
     return (
-        <div className="relative h-full w-full overflow-hidden rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-white/10 shadow-sm flex flex-col">
+        <div ref={containerRef} className="relative h-full w-full overflow-hidden rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-white/10 shadow-sm flex flex-col">
 
             {/* Header / StatusBar */}
             <div className="flex items-center justify-between px-4 py-3 border-b border-gray-200 dark:border-white/5 bg-white/50 dark:bg-neutral-900/50 backdrop-blur-sm z-20 shrink-0">

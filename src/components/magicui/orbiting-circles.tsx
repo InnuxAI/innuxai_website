@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
-import React from "react";
+import React, { useRef } from "react";
+import { useInView } from "framer-motion";
 
 export interface OrbitingCirclesProps
   extends React.HTMLAttributes<HTMLDivElement> {
@@ -25,9 +26,12 @@ export function OrbitingCircles({
   speed = 1,
   ...props
 }: OrbitingCirclesProps) {
+  const containerRef = useRef(null);
+  const isInView = useInView(containerRef);
   const calculatedDuration = duration / speed;
+
   return (
-    <>
+    <div ref={containerRef} className="absolute inset-0 size-full flex items-center justify-center pointer-events-none">
       {path && (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -53,10 +57,11 @@ export function OrbitingCircles({
                 "--radius": radius,
                 "--angle": angle,
                 "--icon-size": `${iconSize}px`,
+                "animationPlayState": isInView ? "running" : "paused",
               } as React.CSSProperties
             }
             className={cn(
-              `absolute flex size-[var(--icon-size)] transform-gpu animate-orbit items-center justify-center rounded-full`,
+              `absolute flex size-[var(--icon-size)] transform-gpu animate-orbit items-center justify-center rounded-full pointer-events-auto`,
               { "[animation-direction:reverse]": reverse },
               className,
             )}
@@ -66,6 +71,6 @@ export function OrbitingCircles({
           </div>
         );
       })}
-    </>
+    </div>
   );
 }

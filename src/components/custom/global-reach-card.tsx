@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect, useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import { Globe } from "@/components/magicui/globe";
 import { Wifi, Activity, Server, Globe as GlobeIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -12,9 +12,12 @@ export function GlobalReachCard() {
         { city: "Tokyo", status: "Active", time: "10:41:58" },
         { city: "New York", status: "Deployed", time: "10:41:45" },
     ]);
+    const containerRef = useRef(null);
+    const isInView = useInView(containerRef);
 
     // Simulate incoming logs
     useEffect(() => {
+        if (!isInView) return;
         const timer = setInterval(() => {
             const cities = ["Singapore", "Berlin", "Sydney", "Dubai", "San Francisco"];
             const statuses = ["Synced", "Active", "Verifying", "Optimizing"];
@@ -30,10 +33,10 @@ export function GlobalReachCard() {
             ]);
         }, 2000);
         return () => clearInterval(timer);
-    }, []);
+    }, [isInView]);
 
     return (
-        <div className="relative flex h-full w-full flex-col overflow-hidden rounded-xl bg-gray-50 dark:bg-neutral-950 shadow-2xl border border-gray-200 dark:border-neutral-800 transition-colors duration-300">
+        <div ref={containerRef} className="relative flex h-full w-full flex-col overflow-hidden rounded-xl bg-gray-50 dark:bg-neutral-950 shadow-2xl border border-gray-200 dark:border-neutral-800 transition-colors duration-300">
 
             {/* Background Globe Container */}
             <div className="absolute inset-0 flex items-center justify-center pt-20">

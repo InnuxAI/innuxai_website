@@ -1,25 +1,28 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import { MessageSquare, CheckCircle2, FileSignature, User } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export function ReviewApproveCard() {
     const [step, setStep] = useState(0);
+    const containerRef = useRef(null);
+    const isInView = useInView(containerRef);
 
     // Animation sequence loop
     useEffect(() => {
+        if (!isInView) return;
         const timer = setInterval(() => {
             setStep((prev) => (prev + 1) % 4);
         }, 2500); // 2.5 second cycle
         return () => clearInterval(timer);
-    }, []);
+    }, [isInView]);
 
     const isApproved = step >= 3;
 
     return (
-        <div className="relative flex h-full w-full flex-col justify-between overflow-hidden rounded-xl bg-gray-50 dark:bg-neutral-950 p-6 shadow-2xl border border-gray-200 dark:border-neutral-800 transition-colors duration-300">
+        <div ref={containerRef} className="relative flex h-full w-full flex-col justify-between overflow-hidden rounded-xl bg-gray-50 dark:bg-neutral-950 p-6 shadow-2xl border border-gray-200 dark:border-neutral-800 transition-colors duration-300">
             {/* Background Gradient */}
             <div className="absolute inset-0 bg-gradient-to-tr from-rose-500/5 via-white/50 dark:via-neutral-900/50 to-transparent opacity-80" />
 

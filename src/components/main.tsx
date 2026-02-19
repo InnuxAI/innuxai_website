@@ -13,7 +13,7 @@ const ContactSection = lazy(() => import('./ContactSection'));
 const FooterSection = lazy(() => import('./FooterSection'));
 
 
-export default function InnuxAIBento() {
+export default function Main() {
   return (
     <>
       <ClientOnly>

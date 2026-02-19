@@ -69,6 +69,7 @@ const Earth: React.FC<EarthProps> = ({
 
     return () => {
       globe.destroy();
+      window.removeEventListener('resize', onResize);
     };
   }, [dark]);
 

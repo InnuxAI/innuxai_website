@@ -1,87 +1,89 @@
-import { ArrowRight, ChevronRight } from "lucide-react"
-import { RainbowButton } from "./magicui/rainbow-button"
-import { AuroraText } from "./magicui/aurora-text"
-import { AnimatedGradientText } from "./magicui/animated-gradient-text"
-import { PointerHighlight } from "./ui/pointer-highlight"
-import { GridPattern } from "./ui/grid-pattern"
+import { ArrowRight, MoveRight } from "lucide-react"
 import { cn } from "../lib/utils"
-import { InteractiveShader } from "./custom/digital-aurora"
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 -z-20">
-        <InteractiveShader flowSpeed={0.05} />
-      </div>
-      {/* Grayscale overlay for depth and separation */}
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.6)_100%)] dark:bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.8)_100%)] pointer-events-none" />
+    <section className="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden pt-20 text-gray-900 dark:text-white transition-colors duration-300">
 
+      {/* Background Color */}
+      <div className="absolute inset-0 bg-white dark:bg-[#020202] -z-50 transition-colors duration-300" />
+
+      {/* Background Gradient Arcs */}
+      {/* Light Mode Gradients */}
+      {/* <div className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[160vw] h-[80vh] bg-gradient-to-b from-indigo-200/50 via-purple-200/30 to-transparent rounded-[100%] blur-[90px] -z-10 pointer-events-none dark:hidden" />
+      <div className="absolute top-[-30%] left-1/2 -translate-x-1/2 w-[140vw] h-[70vh] bg-gradient-to-b from-blue-200/40 via-transparent to-transparent rounded-[100%] blur-[80px] -z-10 pointer-events-none dark:hidden" /> */}
+
+      {/* Dark Mode Gradients */}
+      {/* <div className="hidden dark:block absolute top-[-20%] left-1/2 -translate-x-1/2 w-[160vw] h-[80vh] bg-gradient-to-b from-indigo-500/50 via-purple-500/20 to-transparent rounded-[100%] blur-[90px] -z-10 pointer-events-none mix-blend-screen" />
+      <div className="hidden dark:block absolute top-[-30%] left-1/2 -translate-x-1/2 w-[140vw] h-[70vh] bg-gradient-to-b from-blue-600/40 via-transparent to-transparent rounded-[100%] blur-[80px] -z-10 pointer-events-none mix-blend-screen" /> */}
+
+      <div style={{ background: "radial-gradient(circle at 50% 150%, #a35fff 0%, #ce74ff 15%, #f88fff 30%, #ffadff 45%, #ffdfff 60%, #fff0ff 75%, #ffffff 100%)" }} className="absolute inset-0 -z-20"></div>
+
+      {/* Grid Pattern Overlay */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] -z-20"></div>
+
+      {/* Noise Texture Overlay */}
+      <div className="absolute inset-0 -z-20 opacity-[0.03] pointer-events-none mix-blend-plus-lighter dark:mix-blend-plus-lighter mix-blend-multiply"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+        }}
+      ></div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto text-center flex flex-col items-center px-4 py-24 md:py-32 ">
-        {/* Animated Gradient Badge */}
-        <div
-          className={cn(
-            "group relative mx-auto flex max-w-fit flex-row items-center justify-center rounded-full bg-black/30 border border-black/5 dark:border-white/10 py-1.5 px-4 text-sm font-medium backdrop-blur-md transition-all duration-500 ease-out hover:bg-black/75 hover:shadow-[0_0_1.5rem_-0.2rem_rgba(0,0,0,0.1)] dark:hover:shadow-[0_0_1.5rem_-0.2rem_rgba(255,255,255,0.2)] mb-12"
-          )}
-        >
-          <span
-            className={cn(
-              "absolute inset-0 block h-full w-full animate-gradient rounded-[inherit] bg-gradient-to-r from-[#ffaa40]/30 via-[#9c40ff]/30 to-[#ffaa40]/30 bg-[length:300%_100%] p-[1px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-            )}
-            style={{
-              WebkitMask:
-                "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-              WebkitMaskComposite: "destination-out",
-              mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-              maskComposite: "subtract",
-              WebkitClipPath: "padding-box",
-            }}
-          />
-          <span className="mr-2">🎉</span>
-          <span className="h-4 w-px bg-white/20 mx-2" />
-          <AnimatedGradientText className="text-sm font-medium tracking-wide text-gray-200">
-            Introducing InnuxAI Enterprise Platform
-          </AnimatedGradientText>
-          <ChevronRight className="ml-1 size-4 stroke-gray-500 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
+      <div className="relative z-10 max-w-5xl mx-auto text-center flex flex-col items-center px-6">
+
+        {/* Badge */}
+        <div className="mb-8 inline-flex items-center justify-center rounded-full bg-gray-100 border border-gray-200 dark:bg-white/5 dark:border-white/10 px-4 py-1.5 backdrop-blur-sm transition-colors duration-300">
+          {/* <div className="mr-2 h-1.5 w-1.5 rounded-full bg-purple-500 dark:bg-purple-400 animate-pulse" /> */}
+          <img src="./innuxlogo.svg" className="w-4 h-4 mr-2 rotate-90" alt="" />
+          <span className="text-xs font-medium tracking-wide text-gray-600 dark:text-gray-300 uppercase">
+            Your thinking partner
+          </span>
         </div>
 
-        {/* Main headline with Aurora Text and Pointer Highlight */}
-        <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-10 leading-[1.1] tracking-tight max-w-6xl mx-auto text-balance drop-shadow-sm">
-          InnuxAI is the new way to automate workflows 
-          <br className="hidden md:block" />
-            {/* <PointerHighlight
-              rectangleClassName="bg-blue-500/10 dark:bg-black/20 border-blue-500/20 dark:border-blue-500/30 rounded-xl"
-              pointerClassName="text-blue-400"
-              containerClassName="inline-flex items-center justify-center pt-1"
-            >
-              <span className="relative z-10 font-bold px-4 py-1">automate</span>
-            </PointerHighlight> */}
+        {/* Main Headline */}
+        <h1 className="flex flex-col items-center justify-center text-center text-6xl sm:text-7xl md:text-8xl lg:text-9xl leading-[0.9] tracking-tight mb-8">
+          <span className="instrument-serif-regular-italic text-[#b26dff] dark:text-indigo-300 transition-colors duration-300">Fueling</span>
+          <span className="instrument-serif-regular mt-2">Intelligence</span>
+          <span className="instrument-serif-regular mt-2">with Context</span>
         </h1>
 
         {/* Subtitle */}
-        <p className="text-base sm:text-lg md:text-xl mb-12 max-w-4xl mx-auto leading-loose tracking-wide font-light text-balance drop-shadow-sm">
-          MCP-compliant AI agents that seamlessly integrate with your enterprise tools. 
-          <br/>
-          Built for <span className="text-white font-medium">Gmail</span>, <span className="text-white font-medium">SharePoint</span>, <span className="text-white font-medium">MongoDB</span>, and 100+ platforms.
+        <p className="text-lg sm:text-xl text-gray-600 dark:text-white/60 mb-12 max-w-2xl mx-auto leading-relaxed font-light transition-colors duration-300">
+          We build MCP-compliant AI agents that understand your business, optimize workflows, and scale operations securely.
         </p>
 
-        {/* Rainbow CTA Button */}
-        <div className="relative group">
-          <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-violet-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-          <RainbowButton
-            className="relative px-8 py-5 md:px-10 md:py-6 text-lg font-semibold tracking-wide shadow-xl"
-            style={{ borderRadius: "1rem" }}
-            onClick={() => (window.location.href = "#contact")}
+        {/* Buttons */}
+        <div className="flex flex-col sm:flex-row items-center gap-4">
+          <button
+            onClick={() => (window.location.href = "#modules")}
+            className="group relative inline-flex h-12 items-center justify-center overflow-hidden rounded-full bg-gray-100 dark:bg-white/10 px-8 font-medium text-gray-900 dark:text-white transition-all duration-300 hover:bg-gray-200 dark:hover:bg-white/20 hover:scale-105 border border-gray-200 dark:border-white/10 backdrop-blur-md"
           >
-            Get Started
-            <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-          </RainbowButton>
+            <span className="mr-2">Our Solutions</span>
+            <MoveRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </button>
+
+          <button
+            onClick={() => (window.location.href = "#contact")}
+            className="group relative inline-flex h-12 items-center justify-center overflow-hidden rounded-full bg-[#FFFC98] px-8 font-medium transition-all duration-300 hover:bg-[#FFC998] hover:scale-105 shadow-[0_0_20px_-5px_rgba(79,70,229,0.5)]"
+          >
+            <span>Contact Us</span>
+            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+
+            {/* Inner glow effect */}
+            <div className="absolute inset-0 rounded-full ring-2 ring-white/20 group-hover:ring-white/40 transition-all duration-300" />
+          </button>
         </div>
       </div>
 
-      {/* Bottom transition
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent pointer-events-none"></div> */}
+      {/* Bottom fade/arrow */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-50">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-gray-400 dark:text-white/30">
+          <path d="M19 9L12 16L5 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </div>
+
     </section>
   );
 }
+

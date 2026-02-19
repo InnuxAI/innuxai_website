@@ -1,26 +1,29 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect, useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import { ShieldCheck, Check, Clock, AlertTriangle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export function ComplianceCard() {
     const [step, setStep] = useState(0);
+    const containerRef = useRef(null);
+    const isInView = useInView(containerRef);
 
     // Animation sequence loop
     useEffect(() => {
+        if (!isInView) return;
         const timer = setInterval(() => {
             setStep((prev) => (prev + 1) % 4);
         }, 3500); // 3.5 second cycle
         return () => clearInterval(timer);
-    }, []);
+    }, [isInView]);
 
     // Score logic
     const targetScore = step === 0 ? 0 : step === 1 ? 45 : step === 2 ? 82 : 100;
 
     return (
-        <div className="relative flex h-full w-full flex-col overflow-hidden rounded-xl bg-gray-50 dark:bg-neutral-950 p-6 shadow-2xl border border-gray-200 dark:border-neutral-800 transition-colors duration-300">
+        <div ref={containerRef} className="relative flex h-full w-full flex-col overflow-hidden rounded-xl bg-gray-50 dark:bg-neutral-950 p-6 shadow-2xl border border-gray-200 dark:border-neutral-800 transition-colors duration-300">
             {/* Background Pattern */}
             <div className="absolute inset-0 bg-[radial-gradient(#0000000d_1px,transparent_1px)] dark:bg-[radial-gradient(#1f2937_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-20" />
 

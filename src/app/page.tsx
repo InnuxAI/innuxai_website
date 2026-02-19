@@ -1,5 +1,5 @@
-import InnuxAIBento from "../components/main"
+import Main from "../components/main"
 
 export default function Home() {
-  return <InnuxAIBento />;
+  return <Main />;
 }

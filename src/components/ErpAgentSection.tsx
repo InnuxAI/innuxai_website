@@ -24,7 +24,8 @@ const content = [
 
 const ERPAgentsSection = () => {
   return (
-    <section className="w-full py-12 md:py-24 bg-white dark:bg-black" id="modules">
+    
+    <section className="w-full py-12 md:py-24 dark:bg-black" id="modules">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
         {/* Header */}
         <div className="text-center mb-12 md:mb-20">
@@ -187,6 +188,7 @@ const ERPAgentsSection = () => {
         }
       `}</style>
     </section>
+
   )
 }
 

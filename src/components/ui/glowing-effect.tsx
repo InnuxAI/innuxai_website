@@ -2,7 +2,7 @@
 
 import { memo, useCallback, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
-import { animate } from "motion/react";
+import { animate, useInView } from "framer-motion";
 import { ReactNode } from "react";
 
 interface GlowingEffectProps {
@@ -81,7 +81,7 @@ const GlowingEffect = memo(
             parseFloat(element.style.getPropertyValue("--start")) || 0;
           const targetAngle =
             (180 * Math.atan2(mouseY - center[1], mouseX - center[0])) /
-              Math.PI +
+            Math.PI +
             90;
 
           const angleDiff = ((targetAngle - currentAngle + 180) % 360) - 180;
@@ -99,8 +99,10 @@ const GlowingEffect = memo(
       [inactiveZone, proximity, movementDuration]
     );
 
+    const isInView = useInView(containerRef);
+
     useEffect(() => {
-      if (disabled) return;
+      if (disabled || !isInView) return;
 
       const handleScroll = () => handleMove();
       const handlePointerMove = (e: PointerEvent) => handleMove(e);
@@ -117,7 +119,7 @@ const GlowingEffect = memo(
         window.removeEventListener("scroll", handleScroll);
         document.body.removeEventListener("pointermove", handlePointerMove);
       };
-    }, [handleMove, disabled]);
+    }, [handleMove, disabled, isInView]);
 
     return (
       <>

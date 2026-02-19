@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState, useRef } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import { cn } from "@/lib/utils";
 import {
     Mail,
@@ -51,15 +51,19 @@ export function AIAgentsCard() {
         },
     ];
 
+    const containerRef = useRef(null);
+    const isInView = useInView(containerRef);
+
     useEffect(() => {
+        if (!isInView) return;
         const interval = setInterval(() => {
             setActiveAgent((prev) => (prev + 1) % agents.length);
         }, 3000);
         return () => clearInterval(interval);
-    }, []);
+    }, [agents.length, isInView]);
 
     return (
-        <div className="relative flex h-full w-full flex-col overflow-hidden rounded-xl bg-gray-50 dark:bg-neutral-950 shadow-2xl border border-gray-200 dark:border-neutral-800 transition-colors duration-300">
+        <div ref={containerRef} className="relative flex h-full w-full flex-col overflow-hidden rounded-xl bg-gray-50 dark:bg-neutral-950 shadow-2xl border border-gray-200 dark:border-neutral-800 transition-colors duration-300">
 
             {/* Header / Terminals Look */}
             <div className="flex items-center gap-2 border-b border-gray-200 dark:border-neutral-800 bg-white/50 dark:bg-neutral-900/50 p-3 backdrop-blur-sm">

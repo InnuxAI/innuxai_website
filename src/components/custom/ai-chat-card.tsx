@@ -1,23 +1,26 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import { Bot, User, Send, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export function AIChatCard() {
     const [step, setStep] = useState(0);
+    const containerRef = useRef(null);
+    const isInView = useInView(containerRef);
 
     // Animation sequence loop
     useEffect(() => {
+        if (!isInView) return;
         const timer = setInterval(() => {
             setStep((prev) => (prev + 1) % 5);
         }, 1200); // 1.2 second cycle for faster interaction
         return () => clearInterval(timer);
-    }, []);
+    }, [isInView]);
 
     return (
-        <div className="relative flex h-full w-full flex-col justify-between overflow-hidden rounded-xl bg-gray-50 dark:bg-neutral-950 p-4 shadow-2xl border border-gray-200 dark:border-neutral-800 transition-colors duration-300">
+        <div ref={containerRef} className="relative flex h-full w-full flex-col justify-between overflow-hidden rounded-xl bg-gray-50 dark:bg-neutral-950 p-4 shadow-2xl border border-gray-200 dark:border-neutral-800 transition-colors duration-300">
             {/* Background Gradient */}
             <div className="absolute inset-0 bg-gradient-to-b from-white to-gray-50 dark:from-neutral-900/50 dark:to-neutral-950/80" />
 

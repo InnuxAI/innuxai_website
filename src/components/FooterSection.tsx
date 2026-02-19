@@ -50,7 +50,9 @@ export default function FooterSection() {
     },
   ];
   return (
-    <div className="w-full py-10 lg:py-40 bg-background text-foreground dark:bg-background dark:text-foreground">
+    <div className="w-full py-10 lg:py-40 bg-background text-foreground dark:bg-background dark:text-foreground"
+      style={{ background: "radial-gradient(circle at 50% 150%, #a35fff 0%, #ce74ff 15%, #f88fff 30%, #ffadff 45%, #ffdfff 60%, #fff0ff 75%, #ffffff 100%)" }}
+    >
       <div className="container mx-auto px-4">
         <div className="flex flex-col gap-12">
           {/* Brand Section */}
