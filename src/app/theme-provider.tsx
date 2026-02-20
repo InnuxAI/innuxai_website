@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 
 export function AppThemeProvider({ children }: { children: ReactNode }) {
   return (
-    <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+    <ThemeProvider attribute="class" defaultTheme="light" disableTransitionOnChange>
       {children}
     </ThemeProvider>
   );
